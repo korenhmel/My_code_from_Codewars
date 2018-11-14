@@ -1278,52 +1278,59 @@
 # end
 # p find_nb(24723578342962)
 # "----------------------------------------------------------"
+# "Берем строку считаем ее сумму например 444 = 4+4+4 =12, 12
+#  и есть вес числа и формируем два массива в котором по порядку идет вес, индекс номера и сам номер.
+#  Их разница в весе должна быть самой минимальной, идущих от меньшего номера к большему.
+#  Пример метод closest('444 2000 445 644 2991') выводит ответ [[12, 0, 444], [13, 2, 445]], числа 444 и 445
+#  имеют наименьший вес.
+# my code "
 
-def closest(strng)
-  arr = []
-  arr2 = []
-    str = strng.split(' ')
-    (str.length).times do |n|
-    arr << str[n].split('')
- end 
-(arr.length).times do |num|
-  sum = 0
- arr[num].length.times do |n|
-  sum += arr[num][n].to_i
-  if (n+1) == arr[num].length
-   arr2 << sum
-  end
- end
-end
-arr3 = []
-arr2.each_with_index do |n, i|
-  arr3 << [n,i]
-end
-arr3.sort!
-(arr3.length).times do |num|
-  arr.each_with_index do |n,i|
-if arr3[num][1] ==  i
-  arr3[num] << n.join.to_i
-end
-end
-end
-arr3
-# arr3.each_cons(2){|a| p a }
+# def closest(strng)
+#   arr = []
+#   arr2 = []
+#     str = strng.split(' ')
+#     (str.length).times do |n|
+#     arr << str[n].split('')
+#  end 
+# (arr.length).times do |num|
+#   sum = 0
+#  arr[num].length.times do |n|
+#   sum += arr[num][n].to_i
+#   if (n+1) == arr[num].length
+#    arr2 << sum
+#   end
+#  end
+# end
+# arr3 = []
+# arr2.each_with_index do |n, i|
+#   arr3 << [n,i]
+# end
+# arr3.sort!
+# (arr3.length).times do |num|
+#   arr.each_with_index do |n,i|
+# if arr3[num][1] ==  i
+#   arr3[num] << n.join.to_i
+# end
+# end
+# end
+# # arr3
+# arr3.each_cons(2)
 # .min_by{|a|[a[1][0] - a[0][0]]} || []
-# "@@@@@@@@@@@@@@@@@@@@@ интересная фишка для сравнения массивов"
-end
- # || []
-p closest("444 2000 445 644 2991")
+# # "@@@@@@@@@@@@@@@@@@@@@ интересная фишка для сравнения массивов"
+# end
+#  # || []
+# p closest("444 2000 445 644 2991")
 
-
+# "------------------------------"
+# "another solution"
 # def closest(strng)
 #   strng.split.map
 #    .with_index{|a, i|[a.chars.map(&:to_i).reduce(0, &:+), i, a.to_i]}
 #    .sort
 #    .each_cons(2).min_by{|a|[a[1][0] - a[0][0]]} || []
 # end
-
-
+# "------------------------------"
+# "another solution2"
 # def closest(string)
 #   if string == ''
 #     return []
