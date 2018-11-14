@@ -853,4 +853,497 @@
 #   return '0' unless c.include?(1)
 #   c.reverse.join.sub(/^0+/, '')
 # end
+# "----------------------------------------------------------------------------------------"
+
+# "The function you are going to write is not actually going to help you with your piano playing,
+#  but just explore one of the patterns you're experiencing: Given the number you stopped on,
+#  was it on a black key or a white key? For example, in the description of your piano exercise 
+#  above, if you stopped at 5, your left thumb would be on the fifth key of the piano, which is
+#   black. Or if you stopped at 92, you would have gone all the way from keys 1 to 88 and then 
+#   wrapped around, so that you would be on the fourth key, which is white.
+
+# Your function will receive an integer between 1 and 10000 (maybe you think that in principle 
+# it would be cool to count up to, say, a billion, but considering how many years it would take 
+# it is just not possible) and return the string "black" or "white" -- here are a few more 
+# examples:"
+
+# def black_or_white_key(count)
+#   while count > 88
+#     count-= 88
+# end
+
+# while count > 12
+#   count -=12
+# end
+
+# white = [1, 3, 4, 6, 8, 9, 11]
+# black = [2, 5, 7, 10, 12]
+#   white.each do |n|
+#   black.each do |n2|
+#     if count == n
+#   @result = "white"
+#   elsif count == n2
+#   @result = "black"
+#   end
+# end
+# end
+# @result
+# end
+
+#  p black_or_white_key(201)
+#  "---------------------"
+# "другие решения"
+
+# def black_or_white_key key_press_count
+#   'wbwwbwbwwbwb'[(key_press_count-1)%88%12] == ?w ? 'white' : 'black'
+# end
+# p black_or_white_key(201)
 # "-----------------------"
+# def black_or_white_key(key_press_count)
+#   b_or_w((key_press_count) % 88 % 12)
+# end
+
+# def b_or_w(x)
+#   [1, 3, 4, 6, 8, 9, 11].include?(x) ? "white" : "black"
+# end
+
+# p black_or_white_key(200)
+
+# "---------------------------------------------------------------------------------------------"
+
+
+# class String
+#   def ipv4_address?
+#     arr2 = []
+
+#    arr = self.split(".")
+     
+#      arr.empty? ? arr2 << false : arr2 << true
+
+#        arr.length == 4 ? arr2 << true : arr2 << false
+#       arr.each do |num|
+#        if num.to_i.to_s.length == num.length
+#          arr2 << true
+#           num = num.to_i
+#           num >= 0 and num < 255 ? arr2 << true : arr2 << false
+#         else 
+#           arr2 << false 
+#        end
+#      end
+#       arr2.include?(false) == true ? false : true
+#   end
+# 
+# def persistance(n)
+#   hash = []
+#   first = n.to_s.split("")
+#   first.each{|n| hash << n.to_i}
+#   num = 0 
+#   res = []
+#     until hash.length < 2    do
+#    hash = hash.inject(:*).to_s.split("")
+#     hash.each{|n| res << n.to_i}
+#     hash = res
+#     res = []
+#      num +=1
+#     end
+#   num
+# end
+
+# p persistance(999)
+
+# def persistance(n)
+#   hash = []
+#  first = n.to_s.split("")
+# end
+# p persistance(999)
+
+# 5.times do |n|
+#   puts "string is #{n} "
+# end
+
+#'------------------------------------------------------'
+# def longest_palindrome s
+#   arr = []
+#   arr2 = []
+#   if s.length == 0
+#     arr2 << 0
+#    elsif s.length >=1 
+#     arr2 << 1
+#   end
+  
+#  uniq = s.split("")
+#   uniq.unshift("@")
+#   s = uniq.join
+
+#   (s.length).times do |n|
+#    if s[n] == s[n+1] 
+#       arr << [n, 2]
+#     elsif s[n-1] == s[n+1] and n > 0
+#       arr << [n, 3]
+#     end
+#   end
+     
+#     arr.each do |n|      
+#           arr2 << n[1]
+#            @count = 1
+#           @amount = 2
+#            @amount2 = 3
+#          while s[n[0]- @count] == s[n[0]+1+@count]  and  n[0] > 0 do
+#            arr2 << n[1] + @amount
+#             @count += 1
+#              @amount += 2
+#           end
+#           while s[n[0]- @count] == s[n[0]+@count] and n[0] > 0 do
+#            arr2 << @amount2
+#            @count += 1
+#            @amount2 += 2
+#          end
+#     end
+# # " arr2 = #{arr2}, count = #{@count}, amount = #{@amount}, amount2 = #{@amount2}"
+# arr2.max
+# end
+
+# p longest_palindrome 'poopee'
+
+
+# people = []
+# people.push 1
+# people.push 3
+
+# women = {}
+# women[:number] = people
+# p women[:number]
+# # p @number
+# #
+# p"_________________________________________"
+# # "kirilic33"
+# #latin26 + 1
+# puts
+#  # "Create seed for Iota wallet"
+
+
+  # def create_password(text)
+  #   latin = "ABCDEFGHIJKLMNOPQRSTUVWXYZ9".split("")
+  #   kiril = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя".split("")
+  #   text = text.gsub(/[[:punct:]]/, ' ').delete(" ")
+  #    # "Count and cut the text up to 81 simbol"
+  #   array = []
+  #   text.length.times do |ltr|
+  #     if ltr < 81
+  #      array << text[ltr]
+  #     end
+  #   end
+  #   array
+  #   # "Create array with letter and index"
+  #   check = []
+  #   kiril.each_with_index { |ltr, i| check << [ltr, i] }
+  #   #"Compare every letter in text to letters in cirillic alpfabet and show it index"
+  #   indexes = []
+  #   81.times do |i|
+  #     check.each do |sec|
+  #       if sec[0] == array[i]
+  #         indexes << sec[1]
+  #       end
+  #     end
+  #   end
+  #   indexes
+  #   new_arr = []
+  #   indexes.each do |fig|
+  #     if fig > 26
+  #       fig = fig -27
+  #     end
+  #     new_arr << latin[fig]
+  #   end
+  #   new_arr.join
+  # end
+  # mass = "о сколько нам открытий чудных готовят просвещенья дух и опыт, сын ошибок трудных, и гений, парадоксов друг,"
+ 
+  # p create_password(mass)
+
+#"-----------------------------------------------------------------------------"
+
+# "подсчет суммы по сложным процентам по месяцам"
+#  def count_sum(sum, per, mnth, m_d)
+
+#   array = []
+#   count = 0
+#   (mnth*30).times do 
+#    sum += sum.to_f/100* per
+#    # "the sum per/day = #{sum}"
+#    array << sum
+#   end
+#   m = 0
+#   array.each_with_index do |n, i|
+#     if (i+1)%30 == 0 
+#       m +=1 
+#     puts "#{(i+1)/30} month  = #{n.round(2)} summ " 
+#     end  
+#   end
+# end
+# count_sum(40,2 ,12)
+#'-----------------------------------------------------------------------------------'
+
+# class Percentage_Count
+#   attr_reader :sum, :percent, :month
+
+#   def initialize(sum, percent, month)
+#     @sum = sum.to_f
+#     @percent = percent.to_f
+#     @month = month.to_i
+#   end
+
+#   def count_by_day
+#      array = []
+#    count = 0
+#    sum = @sum
+#    (@month*30).times do |n|
+#      sum += sum/100* @percent
+#      # "the sum per/day = #{sum}"
+#      array << "#{n+1} day #{sum.round(2)} summ"
+#       if  (n+1)%30 == 0
+#         array << "#{((n+1)/30+1)} month"
+#       end
+       
+     
+#     end
+#     array.pop
+#     array
+#   end
+
+#   def count_by_month
+#     array = []
+#     count = 0
+#     sum = @sum
+#    (@month*30).times do 
+#      sum += sum/100* @percent
+#      # "the sum per/day = #{sum}"
+#      array << sum
+#     end
+#     array2 = []
+#     array.each_with_index do |n, i|
+#       if (i+1)%30 == 0 
+#        array2 << "#{(i+1)/30} month  = #{n.round(2)} summ " 
+#       end 
+
+#     end
+#     array2
+
+#   end
+# end
+
+# count1 = Percentage_Count.new(30, 20, 2)
+#   puts count1.count_by_month
+  
+
+#'-----------------------------------------------------------------------------'
+# "разложение числа на множители"
+# def primeFactors(n)
+#  h1 = []
+#  i = 2
+#  while  n >= 1  and i <= 3571 do
+#   if n % i == 0
+#     h1 << i
+#     n = n / i
+#   elsif n % i != 0
+#     i += 1
+#   end
+# end
+
+#  hsh = Hash.new(0)
+#  h1.each do |n|
+#   hsh[n] +=1
+# end
+
+# h3 = []
+#     hsh.each do |k, n|
+#       if n == 1
+#         h3 << "(#{k})"
+#       else
+#      h3 << "(#{k}**#{n})"
+#    end
+#  end
+#  h3.join
+#  end
+#   p primeFactors(7775460)
+  #'--------------------------------------------------------------------------'
+  # params = {}
+# class Man
+#   attr_reader :name, :age
+#   def initialize(name, age)
+#     @name = name.to_s
+#     @age = age.to_i
+#   end
+# end
+
+#'------------------------------------------------------------------------------'
+# "sort by alpfabet by type AaaBbbbDd etc."
+# "my solution"
+# def find_children(dancing_brigade)
+#  dance = dancing_brigade.split('')
+# dance = dance.sort_by { |s| [s.upcase + s] }
+# dance.join
+# end
+
+# p find_children("daCDcAWfdwq")
+
+# "solved by others, two solution"
+# def find_children2(dancers)
+#   dancers.chars.sort_by{ |c| [c.downcase, c]}.join
+# end
+# p find_children2("daCDcAWfdwq")
+
+
+# def find_children3(dancing_brigade)
+#   letters = dancing_brigade.chars
+#   grouped = letters.group_by {|x| x.downcase}.values
+#   grouped.each {|group| group.sort!}.sort.join
+# end
+
+# p find_children3("daCDcAWfdwq")
+#'---------------------------------------------'
+# "create class Array that would convert numbers correspond to disired methods "
+# class Array
+#   def square
+#     self.class each do |n|
+#     n * n
+#    end
+#   end
+
+#   # now fill in the rest
+# end
+
+
+# array = [1, 2, 3, 4, 5]
+# p array.square
+
+# class Array
+#   def square
+#     self.map {|x| x*x}
+#   end
+
+#   def cube
+#     self.map {|x| x**3}
+#   end
+  
+#   def everage
+#     self.sum / size
+#   end
+  
+#   def sum
+#     reduce(:+)
+#   end
+  
+#   def even
+#     select(&:even?)
+#   end
+  
+#   def odd
+#     select(&:odd?)
+#   end
+# end
+# array = [1, 2, 3, 4, 5]
+# p array.square
+# p array.everage
+# p array.cube
+# "--------------------------------------------------"
+# "we have a triangle piramid in wich all bricks is equal to m
+#  n^3  it is how many bricks was on the first basic layer, we hafe to find n,
+#  (n-1)^3 the second layer of the piramid so we have to build piramid,  till on the top n = 1
+#   m = n^3 +(n-1)^3 + (n-1)^3...n^3 where n= 1 the top of the piramid "
+#   "my solution"
+
+# def find_nb(m)
+# n = 1
+# sum = 0
+#   while m > sum do
+#       sum = sum + n**3
+#       n+=1 
+#   end
+#   if sum == m
+#      n -1
+#   else
+#      n = -1
+#   end
+# end
+#  p find_nb(24723578342962)
+#  "----------"
+#  "the other solution"
+# def find_nb(m)
+#   ct = 0
+#   while m > 0
+#     ct += 1
+#     m -= ct**3
+#   end
+#   m == 0 ? ct : -1
+# end
+# p find_nb(24723578342962)
+# "----------------------------------------------------------"
+
+def closest(strng)
+  arr = []
+  arr2 = []
+    str = strng.split(' ')
+    (str.length).times do |n|
+    arr << str[n].split('')
+ end 
+(arr.length).times do |num|
+  sum = 0
+ arr[num].length.times do |n|
+  sum += arr[num][n].to_i
+  if (n+1) == arr[num].length
+   arr2 << sum
+  end
+ end
+end
+arr3 = []
+arr2.each_with_index do |n, i|
+  arr3 << [n,i]
+end
+arr3.sort!
+(arr3.length).times do |num|
+  arr.each_with_index do |n,i|
+if arr3[num][1] ==  i
+  arr3[num] << n.join.to_i
+end
+end
+end
+arr3
+# arr3.each_cons(2){|a| p a }
+# .min_by{|a|[a[1][0] - a[0][0]]} || []
+# "@@@@@@@@@@@@@@@@@@@@@ интересная фишка для сравнения массивов"
+end
+ # || []
+p closest("444 2000 445 644 2991")
+
+
+# def closest(strng)
+#   strng.split.map
+#    .with_index{|a, i|[a.chars.map(&:to_i).reduce(0, &:+), i, a.to_i]}
+#    .sort
+#    .each_cons(2).min_by{|a|[a[1][0] - a[0][0]]} || []
+# end
+
+
+# def closest(string)
+#   if string == ''
+#     return []
+#   end
+#   all_numbers = string.split(' ').map(&:to_i).each_with_index
+#   .map { |element, index| [element.to_s.split('').map(&:to_i)
+#   .reduce(:+), index, element] }.sort_by { |element| element[0] }
+#   array_list = []
+#   all_numbers.each_with_index do |element, index|
+#     if index + 1 != all_numbers.count
+#       difference = (element[0] - all_numbers[index + 1][0]).abs
+#       array_list << [element, all_numbers[index + 1], difference]
+#     end
+#     array_list.sort_by! { |element| element[2] }
+#   end
+# [array_list[0][0], array_list[0][1]]
+# end
+# p closest('444 2000 445 644 2991')
+
+# [[2, 1, 2000], [12, 0, 444]]
+# [[12, 0, 444], [13, 2, 445]]
+# [[13, 2, 445], [14, 3, 644]]
+# [[14, 3, 644], [21, 4, 2991]]
