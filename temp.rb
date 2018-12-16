@@ -1354,3 +1354,74 @@
 # [[12, 0, 444], [13, 2, 445]]
 # [[13, 2, 445], [14, 3, 644]]
 # [[14, 3, 644], [21, 4, 2991]]
+
+# "--------------------------------------------------------------------------"
+# "my variant"
+# def fruit(reels, spins)
+#   arr1 = reels[0][spins[0]]
+#   arr2 = reels[1][spins[1]]
+#   arr3 = reels[2][spins[2]]
+  
+#   arr = [arr1, arr2, arr3]
+  
+#   count = Hash.new(0)
+#   arr.each do |word|
+#   	count[word]+=1
+#   end
+#   array1 = {"Wild"=> 100, "Star"=> 90, "Bell"=> 80, "Shell"=> 70,
+#   "Seven"=> 60, "Cherry"=> 50, "Bar"=> 40, "King"=> 30, "Queen"=> 20, "Jack"=> 10 }
+
+#   array2wild = {"Star"=> 18, "Bell"=> 16, "Shell"=> 14,"Seven"=> 12, "Cherry"=> 10,
+#   "Bar"=> 8, "King"=> 6, "Queen"=> 4, "Jack"=> 2 }
+
+#   array2 = {"Wild"=> 10, "Star"=> 9, "Bell"=> 8, "Shell"=> 7,
+#   "Seven"=> 6, "Cherry"=> 5, "Bar"=> 4, "King"=> 3, "Queen"=> 2, "Jack"=> 1 }
+
+#  count = count.sort_by{|k, w| w}
+#  result = 0
+#  if count.length == 1 
+#  	array1.each do |k, w|
+#  		count[0][0] == k ? result = w : "error"	
+#  	end
+#  elsif count.length == 2 && count[0][0] == "Wild"
+#     array2wild.each do |k, w|
+#     	count[1][0] == k ? result = w : "error"	
+#   end
+# elsif count.length == 2 && count[0][0] != "Wild"
+#     array2.each do |k, w|
+#     	count[1][0] == k ? result = w : "error"	
+#   end
+# else
+# 	result
+#  end
+#   result 
+# end
+# "------------------------------------"
+# "anonther variant"
+def fruit(reels, spins)
+  base = [10,"Jack","Queen", "King", "Bar", "Cherry", "Seven", "Shell", "Bell", "Star", "Wild"]
+  
+  res = [reels[0][spins[0]],reels[1][spins[1]],reels[2][spins[2]]]
+  
+  if res.uniq.size == 3
+    return 0 
+  elsif res.uniq.size == 1
+    return base[0] * base.index(res[0])
+  else 
+    res = res.sort 
+     case res.count("Wild")
+       when 0 ; return base.index(res.sort_by {|el| res.count(el)}.last)
+       when 2 ; return 10
+       when 1 ; return base.index(res[0]) * 2
+     end
+  end
+  
+end
+ 
+reel1 = ["Wild", "Star", "Bell", "Shell", "Seven", "Cherry", "Bar", "King", "Queen", "Jack"]
+reel2 = ["Bar", "Wild", "Queen", "Bell", "King", "Seven", "Cherry", "Jack", "Star", "Shell"]
+reel3 = ["Bell", "King", "Wild", "Bar", "Seven", "Jack", "Shell", "Cherry", "Queen", "Star"]
+spin = [5,6,2]
+p fruit([reel1, reel2, reel3], spin)
+# "should return 0"
+
